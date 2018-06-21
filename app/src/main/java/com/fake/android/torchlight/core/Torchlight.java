@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Contract;
 public abstract class Torchlight extends ITorchlight.Stub {
     private final Object releaseLock = new Object();
     protected Context context;
-    private boolean enabled = false;
+    protected boolean enabled = false;
     private int refs;
     private boolean released;
 
@@ -91,5 +91,9 @@ public abstract class Torchlight extends ITorchlight.Stub {
     @Override
     public boolean hasFlash() {
         return TorchlightControl.hasFlash();
+    }
+
+    protected void rawSet(boolean state) {
+        enabled = state;
     }
 }
